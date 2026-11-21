@@ -1,0 +1,754 @@
+import React, { useState } from "react";
+import "./style.css";
+
+export default function App() { 
+
+  const properties = {
+    villa: {
+      name: "Skyline Luxury Villa",
+      city: "Ahmedabad",
+      price: "₹4.5 Cr",
+      images: [
+        "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+        ],
+    
+      bedrooms: 5,
+      bathrooms: 4,
+      area: "4500 sq ft",
+      description:
+        "A premium luxury villa featuring smart home technology, landscaped gardens and world-class amenities."
+    },
+  
+    penthouse: {
+      name: "Ocean View Penthouse",
+      city: "Mumbai",
+      price: "₹6.8 Cr",
+      images: [
+        "https://images.unsplash.com/photo-1494526585095-c41746248156",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858"
+        ],
+    
+      bedrooms: 4,
+      bathrooms: 4,
+      area: "3800 sq ft",
+      description:
+        "Luxury penthouse with breathtaking sea views and premium interiors."
+    },
+  
+    residence: {
+      name: "Elite Residence",
+      city: "Bangalore",
+      price: "₹3.9 Cr",
+      images: [
+        "https://images.unsplash.com/photo-1570129477492-45c003edd2be",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+        ],
+
+      bedrooms: 4,
+      bathrooms: 3,
+      area: "3200 sq ft",
+      description:
+        "Modern residence designed for comfort, elegance and convenience."
+    },
+    royalvilla: {
+      name: "Royal Garden Villa",
+      city: "Pune",
+      price: "₹5.2 Cr",
+      images: [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750",
+        "https://images.unsplash.com/photo-1564013799919-ab600027ffc6",
+        "https://images.unsplash.com/photo-1600607687644-c7f34f7f7f4d"
+        ],
+      bedrooms: 5,
+      bathrooms: 5,
+      area: "5000 sq ft",
+      description:
+        "An ultra-luxury villa with landscaped gardens, private pool and premium interiors."
+    },
+    
+    palm: {
+      name: "Palm Residency",
+      city: "Hyderabad",
+      price: "₹2.8 Cr",
+      images: [
+        "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde",
+        "https://images.unsplash.com/photo-1484154218962-a197022b5858",
+        "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85"
+        ],
+      bedrooms: 3,
+      bathrooms: 3,
+      area: "2800 sq ft",
+      description:
+        "Modern luxury apartments offering comfort, elegance and excellent connectivity."
+    },
+    
+    imperial: {
+      name: "Imperial Heights",
+      city: "Delhi",
+      price: "₹5.9 Cr",
+      images: [
+        "https://images.unsplash.com/photo-1605146769289-440113cc3d00",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688",
+        "https://images.unsplash.com/photo-1494526585095-c41746248156"
+        ],
+      bedrooms: 4,
+      bathrooms: 4,
+      area: "4000 sq ft",
+      description:
+        "A premium high-rise residence featuring modern amenities and panoramic city views."
+    }
+  };
+
+  const [page, setPage] = useState("home");
+  const [selectedProperty, setSelectedProperty] = useState(null);
+  const [messageSent, setMessageSent] = useState(false);
+  
+  return (
+    <div>
+      {/* NAVBAR */}
+      <nav className="navbar">
+        <div className="logo">
+          <span>ZAINORA</span>
+          <small>ESTATES</small>
+        </div>
+
+        <ul className="nav-links">
+  <li onClick={() => setPage("home")}>
+    Home
+  </li>
+
+  <li onClick={() => setPage("residences")}>
+    Residences
+  </li>
+
+  <li onClick={() => setPage("about")}>
+    About
+  </li>
+
+  <li onClick={() => setPage("services")}>
+    Services
+  </li>
+
+  <li onClick={() => setPage("contact")}>
+    Contact
+  </li>
+</ul>
+
+<button
+  className="gold-btn"
+  onClick={() => setPage("contact")}
+>
+  Book Consultation
+</button>
+      </nav>
+      {page === "home" && (
+      <>
+      
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-content">
+          <span className="badge">
+            Luxury Real Estate & Smart Property Discovery
+          </span>
+
+          <h1>Luxury Living Begins Here</h1>
+
+          <p>
+            Discover premium residences and receive intelligent property
+            recommendations tailored to your lifestyle, budget and future
+            investment goals.
+          </p>
+
+          <div className="hero-buttons">
+
+          <button
+  className="gold-btn"
+  onClick={() => setPage("residences")}
+>
+  Explore Residences
+</button>
+           
+
+
+            <button
+  className="glass-btn"
+  onClick={() => setPage("contact")}
+>
+  Smart Property Match
+</button>
+          </div>
+
+          <div className="hero-features">
+            <span>✓ AI Property Match</span>
+            <span>✓ Verified Listings</span>
+            <span>✓ Luxury Residences</span>
+          </div>
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section className="stats">
+        <div>
+          <h2>500+</h2>
+          <p>Luxury Properties</p>
+        </div>
+
+        <div>
+          <h2>1500+</h2>
+          <p>Happy Clients</p>
+        </div>
+
+        <div>
+          <h2>10+</h2>
+          <p>Years Experience</p>
+        </div>
+
+        <div>
+          <h2>25+</h2>
+          <p>Awards Won</p>
+        </div>
+      </section>
+
+      {/* SMART MATCH */}
+      <section className="smart-match">
+        <h2>Smart Property Match</h2>
+
+        <p>
+          Tell us your preferences and discover your ideal property.
+        </p>
+
+        <div className="match-form">
+          <input placeholder="Preferred City" />
+          <input placeholder="Budget" />
+          <input placeholder="Property Type" />
+
+          <button className="gold-btn">Find My Property</button>
+        </div>
+      </section>
+
+      {/* FEATURED PROPERTIES */}
+      <section className="featured">
+        <h2>Featured Residences</h2>
+
+        <div className="property-grid">
+          <div className="property-card">
+            <img
+              src="https://images.unsplash.com/photo-1600585154526-990dced4db0d"
+              alt="Villa"
+            />
+            <h3>Skyline Luxury Villa</h3>
+            <p>Ahmedabad</p>
+            <h4>₹4.5 Cr</h4>
+            <button className="gold-btn">View Details</button>
+          </div>
+
+          <div className="property-card">
+            <img
+              src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+              alt="Penthouse"
+            />
+            <h3>Modern Penthouse</h3>
+            <p>Mumbai</p>
+            <h4>₹6.8 Cr</h4>
+            <button className="gold-btn">View Details</button>
+          </div>
+
+          <div className="property-card">
+            <img
+              src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
+              alt="Residence"
+            />
+            <h3>Elite Residence</h3>
+            <p>Bangalore</p>
+            <h4>₹3.9 Cr</h4>
+            <button className="gold-btn">View Details</button>
+          </div>
+        </div>
+      </section>
+
+      {/* WHY CHOOSE US */}
+      <section className="why-us">
+        <h2>Why Choose Zainora</h2>
+
+        <div className="why-grid">
+          <div className="why-card">
+            <h3>AI Property Match</h3>
+            <p>
+              Get personalized property recommendations based on your
+              preferences.
+            </p>
+          </div>
+
+          <div className="why-card">
+            <h3>Verified Listings</h3>
+            <p>
+              Every property is carefully reviewed and verified.
+            </p>
+          </div>
+
+          <div className="why-card">
+            <h3>Luxury Experience</h3>
+            <p>
+              Explore premium residences across prime locations.
+            </p>
+          </div>
+
+          <div className="why-card">
+            <h3>Trusted Advisors</h3>
+            <p>
+              Professional guidance throughout your property journey.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="footer">
+        <h2>ZAINORA ESTATES</h2>
+
+        <p>
+          Luxury Real Estate & Smart Property Discovery Platform
+        </p>
+
+        <p className="copyright">
+          © 2026 Zainora Estates. All Rights Reserved.
+        </p>
+      </footer>
+      </>
+)}
+{page === "residences" && (
+<section className="page-section">
+
+  <h1>Luxury Residences</h1>
+
+  <p>
+    Explore our exclusive collection of luxury villas,
+    penthouses and premium residences located in India's
+    most desirable cities.
+  </p>
+
+  <br />
+
+  <div className="property-grid">
+
+    {/* Property 1 */}
+
+<div className="property-card">
+  <img
+    src="https://images.unsplash.com/photo-1600585154526-990dced4db0d"
+    alt="Skyline Luxury Villa"
+  />
+  <h3>Skyline Luxury Villa</h3>
+  <p>📍 Ahmedabad</p>
+  <p>🛏 5 Bedrooms</p>
+  <p>🛁 4 Bathrooms</p>
+  <p>📐 4500 sq ft</p>
+  <h4>₹4.5 Cr</h4>
+
+  <button
+    className="gold-btn"
+    onClick={() => {
+      setSelectedProperty("villa");
+      setPage("details");
+    }}
+  >
+    View Details
+  </button>
+</div>
+
+    {/* Property 2 */}
+    <div className="property-card">
+      <img
+        src="https://images.unsplash.com/photo-1568605114967-8130f3a36994"
+        alt="Ocean View Penthouse"
+      />
+      <h3>Ocean View Penthouse</h3>
+      <p>📍 Mumbai</p>
+      <p>🛏 4 Bedrooms</p>
+      <p>🛁 4 Bathrooms</p>
+      <p>📐 3800 sq ft</p>
+      <h4>₹6.8 Cr</h4>
+        
+
+
+      <button
+  className="gold-btn"
+  onClick={() => {
+    setSelectedProperty("penthouse");
+    setPage("details");
+  }}
+>
+  View Details
+</button>
+    </div>
+
+    {/* Property 3 */}
+    <div className="property-card">
+      <img
+        src="https://images.unsplash.com/photo-1570129477492-45c003edd2be"
+        alt="Elite Residence"
+      />
+      <h3>Elite Residence</h3>
+      <p>📍 Bangalore</p>
+      <p>🛏 4 Bedrooms</p>
+      <p>🛁 3 Bathrooms</p>
+      <p>📐 3200 sq ft</p>
+      <h4>₹3.9 Cr</h4>
+      <button
+  className="gold-btn"
+  onClick={() => {
+    setSelectedProperty("residence");
+    setPage("details");
+  }}
+>
+  View Details
+</button>
+    </div>
+
+    {/* Property 4 */}
+    <div className="property-card">
+      <img
+        src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750"
+        alt="Royal Garden Villa"
+      />
+      <h3>Royal Garden Villa</h3>
+      <p>📍 Pune</p>
+      <p>🛏 5 Bedrooms</p>
+      <p>🛁 5 Bathrooms</p>
+      <p>📐 5000 sq ft</p>
+      <h4>₹5.2 Cr</h4>
+      <button
+  className="gold-btn"
+  onClick={() => {
+    setSelectedProperty("royalvilla");
+    setPage("details");
+  }}
+>
+  View Details
+</button>
+    </div>
+
+    {/* Property 5 */}
+    <div className="property-card">
+      <img
+        src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde"
+        alt="Palm Residency"
+      />
+      <h3>Palm Residency</h3>
+      <p>📍 Hyderabad</p>
+      <p>🛏 3 Bedrooms</p>
+      <p>🛁 3 Bathrooms</p>
+      <p>📐 2800 sq ft</p>
+      <h4>₹2.8 Cr</h4>
+      <button
+  className="gold-btn"
+  onClick={() => {
+    setSelectedProperty("palm");
+    setPage("details");
+  }}
+>
+  View Details
+</button>
+    </div>
+
+    {/* Property 6 */}
+    <div className="property-card">
+      <img
+        src="https://images.unsplash.com/photo-1605146769289-440113cc3d00"
+        alt="Imperial Heights"
+      />
+      <h3>Imperial Heights</h3>
+      <p>📍 Delhi</p>
+      <p>🛏 4 Bedrooms</p>
+      <p>🛁 4 Bathrooms</p>
+      <p>📐 4000 sq ft</p>
+      <h4>₹5.9 Cr</h4>
+      <button
+  className="gold-btn"
+  onClick={() => {
+    setSelectedProperty("imperial");
+    setPage("details");
+  }}
+>
+  View Details
+</button>
+    </div>
+
+  </div>
+
+  </section>
+)}
+
+{page === "about" && (
+<section className="page-section">
+
+  <h1>About Zainora Estates</h1>
+
+  <p className="about-intro">
+    Zainora Estates is a luxury real estate platform dedicated to helping
+    clients discover premium residences across India's most desirable
+    locations.
+  </p>
+
+  <div className="why-grid">
+
+    <div className="why-card">
+      <h3>Our Mission</h3>
+      <p>
+        To simplify luxury property discovery through modern technology
+        and exceptional customer experiences.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>Our Vision</h3>
+      <p>
+        To become India's most trusted luxury real estate platform.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>Verified Listings</h3>
+      <p>
+        Every property listed on Zainora is carefully reviewed and verified.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>Customer First</h3>
+      <p>
+        We focus on helping buyers find properties that truly match their needs.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+)}
+
+{page === "services" && (
+<section className="page-section">
+
+  <h1>Our Services</h1>
+
+  <p className="about-intro">
+    We provide premium real estate services designed to help clients
+    discover, evaluate and invest in luxury properties.
+  </p>
+
+  <div className="why-grid">
+
+    <div className="why-card">
+      <h3>🏡 Property Buying</h3>
+      <p>
+        Discover verified luxury villas, penthouses and premium residences.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>📈 Property Investment</h3>
+      <p>
+        Get expert guidance on high-potential investment opportunities.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>🎯 Smart Property Match</h3>
+      <p>
+        Receive personalized property recommendations based on preferences.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>📋 Consultation</h3>
+      <p>
+        Professional assistance throughout your property journey.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>🏢 Luxury Rentals</h3>
+      <p>
+        Explore premium rental residences in top cities.
+      </p>
+    </div>
+
+    <div className="why-card">
+      <h3>🔐 Verified Listings</h3>
+      <p>
+        Every listing is reviewed to ensure authenticity and quality.
+      </p>
+    </div>
+
+  </div>
+
+</section>
+)}
+
+{page === "contact" && (
+<section className="page-section">
+
+  <h1>Contact Us</h1>
+
+  <p className="about-intro">
+    Have questions about a property or need expert guidance?
+    Our team is here to help.
+  </p>
+
+  <div className="contact-container">
+
+    <input
+      type="text"
+      placeholder="Your Name"
+    />
+
+    <input
+      type="email"
+      placeholder="Email Address"
+    />
+
+    <input
+      type="tel"
+      placeholder="Phone Number"
+    />
+
+    <textarea
+      rows="6"
+      placeholder="Your Message"
+    ></textarea>
+
+<button
+  className="gold-btn"
+  onClick={() => setMessageSent(true)}
+>
+  Send Message
+</button>
+
+{messageSent && (
+  <p
+    style={{
+      color: "#D4AF37",
+      textAlign: "center",
+      marginTop: "15px"
+    }}
+  >
+    ✓ Thank you! Your message has been sent successfully.
+  </p>
+)}
+
+  </div>
+
+</section>
+)}
+
+{page === "details" && (
+<section className="page-section">
+
+<div className="property-hero">
+
+  <h1>{properties[selectedProperty]?.name}</h1>
+
+  <h2>{properties[selectedProperty]?.price}</h2>
+
+  <p>📍 {properties[selectedProperty]?.city}</p>
+
+</div>
+
+<div className="gallery">
+  {properties[selectedProperty]?.images?.map(
+    (image, index) => (
+      <img
+        key={index}
+        src={image}
+        alt="Property"
+      />
+    )
+  )}
+</div>
+
+<div className="property-stats">
+
+  <div className="stat-card">
+    <h3>{properties[selectedProperty]?.bedrooms}</h3>
+    <p>Bedrooms</p>
+  </div>
+
+  <div className="stat-card">
+    <h3>{properties[selectedProperty]?.bathrooms}</h3>
+    <p>Bathrooms</p>
+  </div>
+
+  <div className="stat-card">
+    <h3>{properties[selectedProperty]?.area}</h3>
+    <p>Area</p>
+  </div>
+
+</div>
+
+  <h3>Property Details</h3>
+
+<p><strong>Location:</strong> {properties[selectedProperty]?.city}</p>
+<p><strong>Price:</strong> {properties[selectedProperty]?.price}</p>
+<p><strong>Bedrooms:</strong> {properties[selectedProperty]?.bedrooms}</p>
+<p><strong>Bathrooms:</strong> {properties[selectedProperty]?.bathrooms}</p>
+<p><strong>Area:</strong> {properties[selectedProperty]?.area}</p>
+  <br />
+
+  <h3>Description</h3>
+
+  <p>
+  {properties[selectedProperty]?.description}
+</p>
+
+  <br />
+
+  <h3>Amenities</h3>
+
+<div className="amenities-grid">
+
+  <div className="amenity-card">
+    🏊 Swimming Pool
+  </div>
+
+  <div className="amenity-card">
+    🌳 Private Garden
+  </div>
+
+  <div className="amenity-card">
+    🎬 Home Theatre
+  </div>
+
+  <div className="amenity-card">
+    🔒 24/7 Security
+  </div>
+
+  <div className="amenity-card">
+    🏠 Smart Home
+  </div>
+
+  <div className="amenity-card">
+    🚗 Parking
+  </div>
+
+</div>
+
+  <br />
+
+  <button
+    className="gold-btn"
+    onClick={() => setPage("residences")}
+  >
+    Back to Residences
+  </button>
+
+</section>
+)}
+
+</div>
+);
+}
